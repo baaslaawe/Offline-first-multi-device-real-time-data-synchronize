@@ -1,2 +1,4 @@
-# Off-line-based-multi-device-real-time-database-synchronize
-Off-line based, multi device real time database synchronize
+# Offline first multi device real time data synchronize
+오프라인 우선의 멀티디바이스 데이터 동기화 입니다. 오프라인 우선이라는 말은 오프라인인 상태에서도 데이터 저장이 가능 하며, 온라인 연결 되었을때 동기화 작억을 하여 모든 장치에 데이터를 동일하게 맞춥니다. 멀티디바이스라는 말은 안드로이드, ios, 웹 의 다양한 플렛폼에서 동기화를 통해 데이터를 공유합니다.
+
+
