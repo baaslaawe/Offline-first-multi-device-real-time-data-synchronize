@@ -78,7 +78,7 @@
     "post": {
         "table": {
             "local_id": 2,
-            "name" : "moka insert.."
+            "name": "moka insert.."
             ...
         },
         ...
@@ -86,8 +86,8 @@
     "patch": {
         "table": {
             "local_id": 3,
-            "server_id": 11
-            "name" : "moka update.."
+            "server_id": 11,
+            "name": "moka update.."
             ...
         },
         ...
