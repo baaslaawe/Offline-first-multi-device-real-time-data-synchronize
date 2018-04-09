@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "io.moka.syncdemo"
+
+        targetSdkVersion 26
+        minSdkVersion 23
+
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.21.2"
+
+    /* Support library */
+    implementation rootProject.ext.android_support
+    implementation rootProject.ext.support_recyclerview
+    implementation rootProject.ext.constraint_layout
+
+    /* Moka Base */
+    implementation rootProject.ext.moka_base
+
+    /* Anko */
+    implementation rootProject.ext.anko_coroutines
+    implementation rootProject.ext.anko_sdk15
+    implementation rootProject.ext.anko_appcompat
+    implementation rootProject.ext.anko_sdk15_co
+    implementation rootProject.ext.anko_appcompat_co
+
+    /* Server API Communication */
+    implementation rootProject.ext.retrofit
+    implementation rootProject.ext.retrofit_converter_gson
+    implementation rootProject.ext.okhttp3
+    implementation rootProject.ext.okhttp3_loggin
+}
