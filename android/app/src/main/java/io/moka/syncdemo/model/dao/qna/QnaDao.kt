@@ -1,7 +1,7 @@
 package io.moka.syncdemo.model.dao.qna
 
-import io.moka.dayday_alrm.model.RealmHelper
-import io.moka.dayday_alrm.model.dao._BaseDao
+import io.moka.syncdemo.model.RealmHelper
+import io.moka.syncdemo.model.dao._BaseDao
 import io.moka.syncdemo.model.domain.Qna
 import io.moka.syncdemo.model.domain.copy
 import io.moka.syncdemo.util.DateUtil

@@ -1,6 +1,6 @@
 package io.moka.syncdemo.model.dao
 
-import io.moka.dayday_alrm.model.domain._BaseDomain
+import io.moka.syncdemo.model.domain._BaseDomain
 import io.realm.Realm
 import io.realm.RealmAsyncTask
 
