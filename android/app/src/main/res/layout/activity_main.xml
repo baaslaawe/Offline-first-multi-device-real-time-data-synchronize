@@ -1,19 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<FrameLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/frameLayout_container"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context="io.moka.syncdemo.app.MainActivity">
+	android:layout_height="match_parent">
+
+	<android.support.design.widget.CoordinatorLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:id="@+id/coordinatorLayout_root"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<android.support.design.widget.AppBarLayout
+			android:id="@+id/appBarlayout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:fitsSystemWindows="true">
+
+			<android.support.design.widget.CollapsingToolbarLayout
+				android:id="@+id/collapsingToolbar"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:fitsSystemWindows="true"
+				app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+				app:titleEnabled="false">
+
+				<android.support.v7.widget.Toolbar
+					android:id="@+id/toolbar_temp"
+					android:layout_width="match_parent"
+					android:layout_height="?attr/actionBarSize"
+					app:layout_collapseMode="pin"/>
+
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<RelativeLayout
+						android:id="@+id/relativeLayout_back"
+						android:layout_width="match_parent"
+						android:layout_height="140dp">
+
+						<ImageView
+							android:id="@+id/imageView_back"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:fitsSystemWindows="true"
+							android:foreground="@drawable/gd_main_back"
+							android:scaleType="centerCrop"/>
+
+					</RelativeLayout>
+
+
+					<!--
+
+
+					-->
+
+
+				</RelativeLayout>
+
+			</android.support.design.widget.CollapsingToolbarLayout>
+
+		</android.support.design.widget.AppBarLayout>
+
+		<android.support.v7.widget.RecyclerView
+			android:id="@+id/recyclerView"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+	</android.support.design.widget.CoordinatorLayout>
 
 	<TextView
+		android:layout_width="?attr/actionBarSize"
+		android:layout_height="?attr/actionBarSize"
+		android:layout_gravity="right"
+		android:gravity="center"
+		android:text="Q&amp;A"
+		android:textColor="#FFFFFFFF"
+		android:textSize="15dp"
+		android:textStyle="bold"/>
+
+	<android.support.design.widget.FloatingActionButton
+		android:id="@+id/floatingActionButton_add"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="Hello World!"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toTopOf="parent"/>
+		android:layout_gravity="right|bottom"
+		android:layout_marginBottom="18dp"
+		android:layout_marginRight="18dp"
+		android:clickable="true"
+		app:backgroundTint="#FFFF81A2"
+		app:fabSize="normal"/>
 
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>

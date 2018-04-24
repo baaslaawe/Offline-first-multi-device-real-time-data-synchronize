@@ -35,7 +35,9 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      */
 
-    abstract fun resizeFontSizeAndExt()
+    fun resizeFontSizeAndExt() {
+
+    }
 
     fun onBackPressedSlideOut() {
         super.onBackPressed()

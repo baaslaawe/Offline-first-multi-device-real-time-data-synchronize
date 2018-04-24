@@ -35,6 +35,8 @@ dependencies {
     /* Support library */
     implementation rootProject.ext.android_support
     implementation rootProject.ext.support_recyclerview
+    implementation rootProject.ext.support_design
+    implementation rootProject.ext.support_cardview
     implementation rootProject.ext.constraint_layout
 
     /* Moka Base */
