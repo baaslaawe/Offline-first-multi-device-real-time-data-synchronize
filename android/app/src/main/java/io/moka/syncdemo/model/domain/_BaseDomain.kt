@@ -1,3 +1,3 @@
-package io.moka.dayday_alrm.model.domain
+package io.moka.syncdemo.model.domain
 
 interface _BaseDomain

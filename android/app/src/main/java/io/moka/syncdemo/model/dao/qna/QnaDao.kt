@@ -1,7 +1,6 @@
 package io.moka.syncdemo.model.dao.qna
 
 import io.moka.dayday_alrm.model.RealmHelper
-import io.moka.dayday_alrm.model.dao.Observer
 import io.moka.dayday_alrm.model.dao._BaseDao
 import io.moka.syncdemo.model.domain.Qna
 import io.moka.syncdemo.model.domain.copy
@@ -10,9 +9,6 @@ import io.realm.Realm
 import io.realm.RealmAsyncTask
 
 object QnaDao : _BaseDao<Qna> {
-
-    var isObservable = false
-    val OB: Observer<Qna> by lazy { Observer<Qna>() }
 
     /*
      * realm == null 이면 copy 하여 리턴, observer 를 통해 알린다
@@ -53,8 +49,6 @@ object QnaDao : _BaseDao<Qna> {
 
         if (null != copyQna) {
             if (!syncFlag) {
-                if (isObservable)
-                    OB.onInsert(copyQna!!)
 //                SyncAdapter.performSync()
             }
             return copyQna!!
@@ -95,8 +89,6 @@ object QnaDao : _BaseDao<Qna> {
                 callback = {
                     if (null == realm) {
                         if (!syncFlag) {
-                            if (isObservable)
-                                OB.onInsert(copyQna!!)
 //                            SyncAdapter.performSync()
                         }
                         callback(copyQna!!)
@@ -135,8 +127,6 @@ object QnaDao : _BaseDao<Qna> {
 
         if (null != copyQna) {
             if (!syncFlag) {
-                if (isObservable)
-                    OB.onUpdate(copyQna!!)
 //                SyncAdapter.performSync()
             }
             return copyQna!!
@@ -173,8 +163,6 @@ object QnaDao : _BaseDao<Qna> {
                 callback = {
                     if (null != copyQna) {
                         if (!syncFlag) {
-                            if (isObservable)
-                                OB.onUpdate(copyQna!!)
 //                            SyncAdapter.performSync()
                         }
                         callback(copyQna!!)
@@ -202,9 +190,6 @@ object QnaDao : _BaseDao<Qna> {
             copyQna = realmQna?.copy()
             realmQna?.deleteFromRealm()
         }
-
-        if (isObservable)
-            OB.onDelete(copyQna!!)
     }
 
     /**

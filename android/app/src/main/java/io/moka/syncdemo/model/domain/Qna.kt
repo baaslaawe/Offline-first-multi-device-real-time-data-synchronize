@@ -1,7 +1,6 @@
 package io.moka.syncdemo.model.domain
 
 
-import io.moka.dayday_alrm.model.domain._BaseDomain
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 

@@ -1,4 +1,4 @@
-package io.moka.dayday_alrm.model
+package io.moka.syncdemo.model
 
 
 import android.content.Context
