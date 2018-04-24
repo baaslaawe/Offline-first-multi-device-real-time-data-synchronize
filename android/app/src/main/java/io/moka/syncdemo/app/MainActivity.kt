@@ -26,6 +26,7 @@ class MainActivity : BaseActivity() {
         items.add(QnaAdapter.Data(1))
         items.add(QnaAdapter.Data(2))
         items.add(QnaAdapter.Data(3))
+        items.add(QnaAdapter.Data(4))
         adapter.items = items
     }
 
