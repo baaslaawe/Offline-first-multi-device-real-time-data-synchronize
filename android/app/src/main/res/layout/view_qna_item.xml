@@ -7,26 +7,33 @@
 
 	<ImageView
 		android:id="@+id/imageView_profile"
-		android:layout_width="50dp"
-		android:layout_height="50dp"
-		android:layout_marginBottom="5dp"/>
+		android:layout_width="32dp"
+		android:layout_height="32dp"
+		android:layout_marginLeft="14dp"
+		android:layout_marginTop="6dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/vc_profile_white"/>
+
+	<TextView
+		android:id="@+id/textView_say"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="5dp"
+		android:text="안녕하세요"
+		android:textSize="10dp"
+		app:layout_constraintBottom_toBottomOf="@+id/imageView_profile"
+		app:layout_constraintLeft_toRightOf="@+id/imageView_profile"/>
 
 	<TextView
 		android:id="@+id/textView_name"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="1dp"
 		android:text="김은후"
-		app:layout_constraintLeft_toRightOf="@+id/imageView_profile"/>
-
-	<TextView
-		android:id="@+id/textView_say"
-		android:layout_width="wrap_content"
-		android:layout_height="15dp"
-		android:layout_marginBottom="2dp"
-		android:text="안녕하세요"
-		app:layout_constraintLeft_toRightOf="@+id/imageView_profile"
-		app:layout_constraintTop_toBottomOf="@+id/textView_name"/>
+		android:textSize="11dp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toTopOf="@+id/textView_say"
+		app:layout_constraintLeft_toLeftOf="@+id/textView_say"/>
 
 	<android.support.v7.widget.CardView
 		android:id="@+id/cardView"
@@ -34,6 +41,7 @@
 		android:layout_height="60dp"
 		android:layout_marginLeft="12dp"
 		android:layout_marginRight="12dp"
+		android:layout_marginTop="6dp"
 		app:cardBackgroundColor="#FFFFFF"
 		app:cardCornerRadius="6dp"
 		app:cardElevation="4dp"

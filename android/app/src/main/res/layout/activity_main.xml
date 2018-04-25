@@ -33,25 +33,58 @@
 					android:layout_height="?attr/actionBarSize"
 					app:layout_collapseMode="pin"/>
 
-				<RelativeLayout
+				<android.support.constraint.ConstraintLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
 
-					<RelativeLayout
-						android:id="@+id/relativeLayout_back"
+					<ImageView
+						android:id="@+id/imageView_back"
 						android:layout_width="match_parent"
-						android:layout_height="140dp">
+						android:layout_height="140dp"
+						android:fitsSystemWindows="true"
+						android:foreground="@drawable/gd_main_back"
+						android:scaleType="centerCrop"/>
 
-						<ImageView
-							android:id="@+id/imageView_back"
-							android:layout_width="match_parent"
-							android:layout_height="match_parent"
-							android:fitsSystemWindows="true"
-							android:foreground="@drawable/gd_main_back"
-							android:scaleType="centerCrop"/>
+					<android.support.constraint.Group
+						android:id="@+id/group_profile"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						app:constraint_referenced_ids="imageView_profile, textView_say, textView_name"/>
 
-					</RelativeLayout>
+					<ImageView
+						android:id="@+id/imageView_profile"
+						android:layout_width="52dp"
+						android:layout_height="52dp"
+						android:layout_marginBottom="16dp"
+						android:layout_marginLeft="14dp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintLeft_toLeftOf="parent"
+						app:srcCompat="@drawable/vc_profile_gray"/>
 
+					<TextView
+						android:id="@+id/textView_say"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="7dp"
+						android:hint="간단한 소개를 입력해 주세요"
+						android:text=""
+						android:textColor="#FFFFFFFF"
+						android:textColorHint="#FFEEEEEE"
+						android:textSize="12dp"
+						app:layout_constraintBottom_toBottomOf="@+id/imageView_profile"
+						app:layout_constraintLeft_toRightOf="@+id/imageView_profile"/>
+
+					<TextView
+						android:id="@+id/textView_name"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:hint="이름을 입력해주세요"
+						android:textColor="#FFFFFFFF"
+						android:textColorHint="#FFEEEEEE"
+						android:textSize="14dp"
+						android:textStyle="bold"
+						app:layout_constraintBottom_toTopOf="@+id/textView_say"
+						app:layout_constraintLeft_toLeftOf="@+id/textView_say"/>
 
 					<!--
 
@@ -59,7 +92,7 @@
 					-->
 
 
-				</RelativeLayout>
+				</android.support.constraint.ConstraintLayout>
 
 			</android.support.design.widget.CollapsingToolbarLayout>
 
@@ -69,6 +102,8 @@
 			android:id="@+id/recyclerView"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
+			android:clipToPadding="false"
+			android:paddingTop="8dp"
 			app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 	</android.support.design.widget.CoordinatorLayout>
@@ -92,6 +127,7 @@
 		android:layout_marginRight="18dp"
 		android:clickable="true"
 		app:backgroundTint="#FFFF81A2"
-		app:fabSize="normal"/>
+		app:fabSize="normal"
+		app:srcCompat="@drawable/vc_add_white"/>
 
 </FrameLayout>

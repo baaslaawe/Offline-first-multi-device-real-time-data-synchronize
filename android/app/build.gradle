@@ -42,6 +42,10 @@ dependencies {
     /* Moka Base */
     implementation rootProject.ext.moka_base
 
+    /* glide */
+    implementation rootProject.ext.glide
+    kapt rootProject.ext.glide_kapt
+
     /* Anko */
     implementation rootProject.ext.anko_coroutines
     implementation rootProject.ext.anko_sdk15
