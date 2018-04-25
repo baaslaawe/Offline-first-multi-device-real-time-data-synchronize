@@ -45,12 +45,6 @@
 						android:foreground="@drawable/gd_main_back"
 						android:scaleType="centerCrop"/>
 
-					<android.support.constraint.Group
-						android:id="@+id/group_profile"
-						android:layout_width="match_parent"
-						android:layout_height="match_parent"
-						app:constraint_referenced_ids="imageView_profile, textView_say, textView_name"/>
-
 					<ImageView
 						android:id="@+id/imageView_profile"
 						android:layout_width="52dp"
@@ -85,11 +79,6 @@
 						android:textStyle="bold"
 						app:layout_constraintBottom_toTopOf="@+id/textView_say"
 						app:layout_constraintLeft_toLeftOf="@+id/textView_say"/>
-
-					<!--
-
-
-					-->
 
 
 				</android.support.constraint.ConstraintLayout>

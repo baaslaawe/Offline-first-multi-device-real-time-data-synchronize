@@ -31,7 +31,6 @@ class MainActivity : BaseActivity() {
         appBarlayout.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
             if (isFinishing)
                 return@addOnOffsetChangedListener
-//            group_profile.alpha = (verticalOffset.toFloat() / appBarLayout.totalScrollRange) * -1
             imageView_profile.alpha = 1 - (verticalOffset.toFloat() / appBarLayout.totalScrollRange) * -1
             textView_say.alpha = 1 - (verticalOffset.toFloat() / appBarLayout.totalScrollRange) * -1
             textView_name.alpha = 1 - (verticalOffset.toFloat() / appBarLayout.totalScrollRange) * -1
