@@ -110,7 +110,7 @@ object QnaDao : _BaseDao<Qna> {
 
             var qna: Qna? = null
             when {
-                null != domain -> qna = realmInstance.copyToRealmOrUpdate(qna)
+                null != domain -> qna = realmInstance.copyToRealmOrUpdate(domain)
                 null != id -> qna = realmInstance.where(Qna::class.java).equalTo("id", id).findFirst()
                 else -> RuntimeException("both (id / qna) must not be null")
             }
@@ -145,7 +145,7 @@ object QnaDao : _BaseDao<Qna> {
 
                     var qna: Qna? = null
                     if (null != domain)
-                        qna = realmInstance.copyToRealmOrUpdate(qna)
+                        qna = realmInstance.copyToRealmOrUpdate(domain)
                     else if (null != id)
                         qna = realmInstance.where(Qna::class.java).equalTo("id", id).findFirst()
                     else

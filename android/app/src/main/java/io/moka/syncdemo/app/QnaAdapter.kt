@@ -11,8 +11,11 @@ import io.moka.mokabaselib.adapter.RecyclerItemView
 import io.moka.syncdemo.R
 import io.moka.syncdemo.model.domain.Qna
 import kotlinx.android.synthetic.main.view_qna_item.view.*
+import org.jetbrains.anko.sdk15.coroutines.onClick
 
 class QnaAdapter(private val context: Context) : BaseAdapter<QnaAdapter.Data, RecyclerItemView<QnaAdapter.Data>>() {
+
+    var onClickItem: ((qna: Qna?) -> Unit)? = null
 
     override fun onCreateContentItemViewHolder(parent: ViewGroup, contentViewType: Int): RecyclerView.ViewHolder {
         return QnaItemView(context, parent)
@@ -26,8 +29,11 @@ class QnaAdapter(private val context: Context) : BaseAdapter<QnaAdapter.Data, Re
 
         init {
             itemView?.run {
-                imageView_profile.radius(context, R.drawable.vc_profile_white, 32)
+                imageView_profile.radius(context, R.drawable.vc_profile_white, 28)
+
+                constraintLayout_container.onClick { onClickItem?.invoke(data.qna) }
             }
+
         }
 
         override fun refreshView(data: Data) = with(itemView) {
@@ -37,7 +43,6 @@ class QnaAdapter(private val context: Context) : BaseAdapter<QnaAdapter.Data, Re
     }
 
     data class Data(
-            val id: Int,
             val qna: Qna? = null
     ) : ItemData
 

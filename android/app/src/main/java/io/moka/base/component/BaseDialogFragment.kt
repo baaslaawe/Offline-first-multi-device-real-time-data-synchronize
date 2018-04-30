@@ -39,11 +39,8 @@ abstract class BaseDialogFragment : AppCompatDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        resizeFontSizeAndExt()
         MLog.a("Dialog", "onViewCreated called #####")
     }
-
-    abstract fun resizeFontSizeAndExt()
 
     override fun onResume() {
         super.onResume()

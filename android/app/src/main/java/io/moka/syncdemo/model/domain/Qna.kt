@@ -9,6 +9,10 @@ open class Qna(
         @PrimaryKey
         var id: Long = 0,
         var serverId: Long = 0,
+        var userId: Long = 0,
+
+        var question: String? = null,
+        var answer: String? = null,
 
         var dirtyFlag: Boolean = true,
         var createdAt: Long = 0,
