@@ -7,7 +7,6 @@ import io.moka.base.module.radius
 import io.moka.syncdemo.R
 import io.moka.syncdemo.app.dialog.AnswerDialog
 import io.moka.syncdemo.app.dialog.PostQuestionDialog
-import io.moka.syncdemo.model.domain.Qna
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk15.coroutines.onClick
 
@@ -69,10 +68,10 @@ class MainActivity : BaseActivity() {
                 })
     }
 
-    private fun onClickToAnswer(qna: Qna?) {
+    private fun onClickToAnswer(qna: QnaAdapter.Data?) {
         AnswerDialog()
                 .apply {
-                    question = qna?.question
+                    question = qna?.question?.question
                 }
                 .showDialog(supportFragmentManager, {
 

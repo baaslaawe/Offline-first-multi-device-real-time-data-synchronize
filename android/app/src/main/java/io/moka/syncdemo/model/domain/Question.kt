@@ -4,7 +4,7 @@ package io.moka.syncdemo.model.domain
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
-open class Qna(
+open class Question(
 
         @PrimaryKey
         var id: Long = 0,
@@ -12,7 +12,6 @@ open class Qna(
         var userId: Long = 0,
 
         var question: String? = null,
-        var answer: String? = null,
 
         var dirtyFlag: Boolean = true,
         var createdAt: Long = 0,
@@ -23,13 +22,16 @@ open class Qna(
 /**
  */
 
-fun Qna.copy(): Qna {
-    val qna = Qna()
-    qna.id = this.id
-    qna.serverId = this.serverId
+fun Question.copy(): Question {
+    val question = Question()
+    question.id = this.id
+    question.serverId = this.serverId
+    question.userId = this.userId
 
-    qna.dirtyFlag = this.dirtyFlag
-    qna.createdAt = this.createdAt
-    qna.updatedAt = this.updatedAt
-    return qna
+    question.question = this.question
+
+    question.dirtyFlag = this.dirtyFlag
+    question.createdAt = this.createdAt
+    question.updatedAt = this.updatedAt
+    return question
 }
