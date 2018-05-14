@@ -7,36 +7,70 @@
 	android:background="#FFFFFF">
 
 	<TextView
-		android:id="@+id/textView_question"
+		android:id="@+id/textView_name"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="16dp"
 		android:layout_marginTop="12dp"
-		android:text="Q. 질문 입니다"
-		android:textSize="18dp"
+		android:text="이름."
+		android:textSize="17dp"
 		android:textStyle="bold"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintTop_toTopOf="parent"/>
 
 	<EditText
-		android:id="@+id/editText_content"
+		android:id="@+id/editText_name"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="10dp"
+		android:layout_marginTop="6dp"
 		android:background="#FFEEEEEE"
 		android:gravity="top"
-		android:hint="답변을 입력해주세요"
-		android:minHeight="100dp"
-		android:paddingBottom="6dp"
+		android:hint="이름을 입력해주세요"
+		android:inputType="text"
+		android:maxLines="1"
+		android:paddingBottom="10dp"
 		android:paddingLeft="8dp"
 		android:paddingRight="8dp"
-		android:paddingTop="6dp"
+		android:paddingTop="10dp"
 		android:textColor="#FF616161"
 		android:textColorHint="#FFB1B1B1"
 		android:textSize="12dp"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/textView_question"/>
+		app:layout_constraintTop_toBottomOf="@+id/textView_name"/>
+
+	<TextView
+		android:id="@+id/textView_say"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="12dp"
+		android:text="간단한 소개."
+		android:textSize="17dp"
+		android:textStyle="bold"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/editText_name"/>
+
+	<EditText
+		android:id="@+id/editText_say"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="6dp"
+		android:background="#FFEEEEEE"
+		android:gravity="top"
+		android:hint="소개를 입력해주세요"
+		android:inputType="textMultiLine"
+		android:maxLines="2"
+		android:paddingBottom="10dp"
+		android:paddingLeft="8dp"
+		android:paddingRight="8dp"
+		android:paddingTop="10dp"
+		android:textColor="#FF616161"
+		android:textColorHint="#FFB1B1B1"
+		android:textSize="12dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textView_say"/>
 
 	<TextView
 		android:id="@+id/textView_ok"
@@ -45,7 +79,7 @@
 		android:text="확인"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/editText_content"/>
+		app:layout_constraintTop_toBottomOf="@+id/editText_say"/>
 
 	<TextView
 		android:id="@+id/textView_cancel"
@@ -55,6 +89,6 @@
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintRight_toLeftOf="@+id/textView_ok"
 		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/editText_content"/>
+		app:layout_constraintTop_toBottomOf="@+id/editText_say"/>
 
 </android.support.constraint.ConstraintLayout>

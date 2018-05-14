@@ -244,6 +244,20 @@ object AnswerDao : _BaseDao<Answer> {
         })
     }
 
+    fun getByQuestion(questionId: Long): List<Answer>? {
+        var copyAnswers: List<Answer>? = null
+
+        RealmHelper.onInstance(realm = null, work = { realmInstance ->
+            val realmResults = realmInstance.where(Answer::class.java)
+                    .equalTo("questionId", questionId)
+                    .findAll()
+
+            copyAnswers = realmResults?.copy()
+        })
+
+        return copyAnswers
+    }
+
     /**
      */
 

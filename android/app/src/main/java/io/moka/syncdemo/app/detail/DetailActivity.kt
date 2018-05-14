@@ -1,18 +1,14 @@
-package io.moka.syncdemo.app
+package io.moka.syncdemo.app.detail
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import io.moka.base.component.BaseActivity
 import io.moka.base.module.radius
 import io.moka.syncdemo.R
-import io.moka.syncdemo.app.dialog.AnswerDialog
-import io.moka.syncdemo.app.dialog.PostQuestionDialog
+import io.moka.syncdemo.app.main.dialog.PostQuestionDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk15.coroutines.onClick
 
-class MainActivity : BaseActivity() {
-
-    private val adapter by lazy { QnaAdapter(this) }
+class DetailActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,11 +19,6 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initView() {
-        /* recyclerView */
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = adapter
-
         /* profile image */
         imageView_profile.radius(this, R.drawable.vc_profile_gray, 28)
 
@@ -42,20 +33,10 @@ class MainActivity : BaseActivity() {
 
         /* bind events */
         floatingActionButton_add.onClick { onClickToPostQuestion() }
-        adapter.onClickItem = { onClickToAnswer(it) }
 
     }
 
     private fun loadData() {
-        val items = ArrayList<QnaAdapter.Data>()
-        items.add(QnaAdapter.Data())
-        items.add(QnaAdapter.Data())
-        items.add(QnaAdapter.Data())
-        items.add(QnaAdapter.Data())
-        items.add(QnaAdapter.Data())
-        items.add(QnaAdapter.Data())
-        items.add(QnaAdapter.Data())
-        adapter.items = items
     }
 
     /*
@@ -64,16 +45,6 @@ class MainActivity : BaseActivity() {
     private fun onClickToPostQuestion() {
         PostQuestionDialog()
                 .showDialog(supportFragmentManager, { text: String ->
-
-                })
-    }
-
-    private fun onClickToAnswer(qna: QnaAdapter.Data?) {
-        AnswerDialog()
-                .apply {
-                    question = qna?.question?.question
-                }
-                .showDialog(supportFragmentManager, {
 
                 })
     }

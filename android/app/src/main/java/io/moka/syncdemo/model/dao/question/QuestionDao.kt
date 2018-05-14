@@ -7,6 +7,8 @@ import io.moka.syncdemo.model.domain.copy
 import io.moka.syncdemo.util.DateUtil
 import io.realm.Realm
 import io.realm.RealmAsyncTask
+import io.realm.RealmResults
+import io.realm.Sort
 
 object QuestionDao : _BaseDao<Question> {
 
@@ -236,6 +238,46 @@ object QuestionDao : _BaseDao<Question> {
                                     }
                                     else {
                                         callback(question)
+                                    }
+                                })
+
+                        this.removeAllChangeListeners()
+                    }
+        })
+    }
+
+    fun getAll(): List<Question>? {
+        var copyDayList: List<Question>? = null
+
+        RealmHelper.onInstance(realm = null, work = { realmInstance ->
+            val realmResults =
+                    realmInstance.where(Question::class.java).sort("createdAt", Sort.DESCENDING).findAll()
+
+            copyDayList = realmResults?.copy()
+        })
+
+        return copyDayList
+    }
+
+    fun getAllAsync(realm: Realm?, callback: (questions: List<Question>?) -> Unit) {
+        RealmHelper.onInstanceNoClose(realm = realm, work = { realmInstance ->
+
+            realmInstance.where(Question::class.java)
+                    .findAllAsync()
+                    .run {
+                        addChangeListener(
+                                { questions: RealmResults<Question>? ->
+                                    if (!isValid) {
+                                        callback(null)
+                                        return@addChangeListener
+                                    }
+
+                                    if (null == realm) {
+                                        callback(questions?.copy())
+                                        realmInstance.close()
+                                    }
+                                    else {
+                                        callback(questions)
                                     }
                                 })
 

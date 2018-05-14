@@ -1,4 +1,4 @@
-package io.moka.syncdemo.app.dialog
+package io.moka.syncdemo.app.main.dialog
 
 
 import android.os.Bundle
@@ -8,18 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import io.moka.base.component.BaseDialogFragment
 import io.moka.syncdemo.R
-import kotlinx.android.synthetic.main.dialog_answer.*
+import kotlinx.android.synthetic.main.dialog_set_user.*
 import org.jetbrains.anko.sdk15.coroutines.onClick
 
 
-class AnswerDialog : BaseDialogFragment() {
+class SetUserDialog : BaseDialogFragment() {
 
-    var question: String? = null
+    var name: String? = null
+    var say: String? = null
 
-    private var onClickOk: ((answer: String) -> Unit)? = null
+    private var onClickOk: ((name: String, say: String) -> Unit)? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.dialog_answer, null)
+        return inflater.inflate(R.layout.dialog_set_user, null)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,23 +40,24 @@ class AnswerDialog : BaseDialogFragment() {
      */
 
     private fun initView() {
-        textView_question.text = question
+        editText_name.setText(name)
+        editText_say.setText(say)
     }
 
     /**
      */
 
     private fun onClickOk() {
-        onClickOk?.invoke(editText_content.text.toString())
+        onClickOk?.invoke(editText_name.text.toString(), editText_say.text.toString())
         dismiss()
     }
 
     /**
      */
 
-    fun showDialog(manager: FragmentManager, onClickOk: (answer: String) -> Unit) {
+    fun showDialog(manager: FragmentManager, onClickOk: (name: String, say: String) -> Unit) {
         this.onClickOk = onClickOk
-        show(manager, "AnswerDialog")
+        show(manager, "SetUserDialog")
     }
 
 }

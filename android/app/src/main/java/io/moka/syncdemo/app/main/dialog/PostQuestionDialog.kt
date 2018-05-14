@@ -1,4 +1,4 @@
-package io.moka.syncdemo.app.dialog
+package io.moka.syncdemo.app.main.dialog
 
 
 import android.os.Bundle
@@ -44,7 +44,7 @@ class PostQuestionDialog : BaseDialogFragment() {
      */
 
     private fun onClickOk() {
-        onClickOk?.invoke(editText_content.text.toString())
+        onClickOk?.invoke(editText_name.text.toString())
         dismiss()
     }
 

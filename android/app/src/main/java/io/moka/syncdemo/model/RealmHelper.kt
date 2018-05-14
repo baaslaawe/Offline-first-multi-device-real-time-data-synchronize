@@ -9,19 +9,20 @@ import io.realm.RealmConfiguration
 
 object RealmHelper {
 
-    private val DB_VERSION = 0 /* todo : DB 마이그레이션 할때 +1 해줘야됨 */
+    private const val DB_VERSION = 0 /* todo : DB 마이그레이션 할때 +1 해줘야됨 */
 
     fun init(context: Context) {
         Realm.init(context)
         val builder = RealmConfiguration.Builder()
                 .name("default.realm")
                 .schemaVersion(DB_VERSION.toLong())
+                .deleteRealmIfMigrationNeeded()
                 .migration(Migration())
 
         Realm.setDefaultConfiguration(builder.build())
     }
 
-    val instance: Realm
+    private val instance: Realm
         get() = Realm.getDefaultInstance()
 
     /**

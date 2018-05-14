@@ -2,6 +2,7 @@ package io.moka.syncdemo.model.domain
 
 
 import io.realm.RealmObject
+import io.realm.RealmResults
 import io.realm.annotations.PrimaryKey
 
 open class Answer(
@@ -9,9 +10,10 @@ open class Answer(
         @PrimaryKey
         var id: Long = 0,
         var serverId: Long = 0,
-        var userId: Long = 0,
+        var questionServerId: Long = 0,
         var questionId: Long = 0,
 
+        var name: Long = 0,
         var answer: String? = null,
 
         var dirtyFlag: Boolean = true,
@@ -27,7 +29,9 @@ fun Answer.copy(): Answer {
     val answer = Answer()
     answer.id = this.id
     answer.serverId = this.serverId
-    answer.userId = this.userId
+    answer.questionServerId = this.questionServerId
+
+    answer.name = this.name
     answer.questionId = this.questionId
 
     answer.answer = this.answer
@@ -36,4 +40,8 @@ fun Answer.copy(): Answer {
     answer.createdAt = this.createdAt
     answer.updatedAt = this.updatedAt
     return answer
+}
+
+fun RealmResults<Answer>.copy(): List<Answer> {
+    return this.map { it.copy() }
 }
