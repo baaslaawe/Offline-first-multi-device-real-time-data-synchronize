@@ -9,6 +9,7 @@ import io.moka.syncdemo.model.dao.question.QuestionDao
 import io.moka.syncdemo.model.domain.Answer
 import io.moka.syncdemo.model.domain.Question
 import kotlinx.android.synthetic.main.activity_detail.*
+import org.jetbrains.anko.sdk15.coroutines.onClick
 import kotlin.properties.Delegates
 
 class DetailActivity : BaseActivity() {
@@ -28,9 +29,7 @@ class DetailActivity : BaseActivity() {
     }
 
     private fun initView() {
-        /* profile image */
-        imageView_profile.radius(this, R.drawable.vc_profile_gray, 28)
-
+        imageView_back.onClick { onBackPressed() }
     }
 
     private fun loadData() {
@@ -38,9 +37,6 @@ class DetailActivity : BaseActivity() {
         viewModel.question = QuestionDao.get(null, id)!!
         viewModel.answers = AnswerDao.getByQuestion(id) ?: ArrayList()
     }
-
-    /*
-     */
 
     /**
      * ViewModel
@@ -53,10 +49,12 @@ class DetailActivity : BaseActivity() {
                     if (new.name.isNullOrEmpty() and new.say.isNullOrEmpty()) {
                         textView_name.text = "-"
                         textView_say.text = "익명 입니다"
+                        imageView_profile.radius(this@DetailActivity, R.drawable.vc_profile_gray, 28)
                     }
                     else {
                         textView_name.text = new.name
                         textView_say.text = new.say
+                        imageView_profile.radius(this@DetailActivity, new.imageUrl, 28)
                     }
 
                     textView_question.text = "Q. ${new.question}"
