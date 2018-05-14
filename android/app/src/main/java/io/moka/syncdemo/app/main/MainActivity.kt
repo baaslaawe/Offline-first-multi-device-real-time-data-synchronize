@@ -1,10 +1,12 @@
 package io.moka.syncdemo.app.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import io.moka.base.component.BaseActivity
 import io.moka.base.module.radius
 import io.moka.syncdemo.R
+import io.moka.syncdemo.app.detail.DetailActivity
 import io.moka.syncdemo.app.main.dialog.PostQuestionDialog
 import io.moka.syncdemo.app.main.dialog.SetUserDialog
 import io.moka.syncdemo.component.UserManager
@@ -83,8 +85,10 @@ class MainActivity : BaseActivity() {
                 })
     }
 
-    private fun onClickToDetail(qna: QnaAdapter.Data?) {
-
+    private fun onClickToDetail(qna: QnaAdapter.Data) {
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(DetailActivity.KEY_QUESTION_ID, qna.question.id)
+        startActivity(intent)
     }
 
     /**

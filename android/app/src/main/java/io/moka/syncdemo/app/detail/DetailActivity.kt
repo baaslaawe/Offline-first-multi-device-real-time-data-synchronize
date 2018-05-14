@@ -4,15 +4,24 @@ import android.os.Bundle
 import io.moka.base.component.BaseActivity
 import io.moka.base.module.radius
 import io.moka.syncdemo.R
-import io.moka.syncdemo.app.main.dialog.PostQuestionDialog
-import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.sdk15.coroutines.onClick
+import io.moka.syncdemo.model.dao.answer.AnswerDao
+import io.moka.syncdemo.model.dao.question.QuestionDao
+import io.moka.syncdemo.model.domain.Answer
+import io.moka.syncdemo.model.domain.Question
+import kotlinx.android.synthetic.main.activity_detail.*
+import kotlin.properties.Delegates
 
 class DetailActivity : BaseActivity() {
 
+    private val viewModel by lazy { ViewModel() }
+
+    companion object {
+        const val KEY_QUESTION_ID = "DetailActivity/KEY_QUESTION_ID"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_detail)
 
         initView()
         loadData()
@@ -22,30 +31,53 @@ class DetailActivity : BaseActivity() {
         /* profile image */
         imageView_profile.radius(this, R.drawable.vc_profile_gray, 28)
 
-        /* coordinator layout */
-        appBarlayout.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
-            if (isFinishing)
-                return@addOnOffsetChangedListener
-            imageView_profile.alpha = 1 - (verticalOffset.toFloat() / appBarLayout.totalScrollRange) * -1
-            textView_say.alpha = 1 - (verticalOffset.toFloat() / appBarLayout.totalScrollRange) * -1
-            textView_name.alpha = 1 - (verticalOffset.toFloat() / appBarLayout.totalScrollRange) * -1
-        }
-
-        /* bind events */
-        floatingActionButton_add.onClick { onClickToPostQuestion() }
-
     }
 
     private fun loadData() {
+        val id = intent.getLongExtra(KEY_QUESTION_ID, 0)
+        viewModel.question = QuestionDao.get(null, id)!!
+        viewModel.answers = AnswerDao.getByQuestion(id) ?: ArrayList()
     }
 
     /*
      */
 
-    private fun onClickToPostQuestion() {
-        PostQuestionDialog()
-                .showDialog(supportFragmentManager, { text: String ->
+    /**
+     * ViewModel
+     */
 
+    inner class ViewModel {
+
+        var question: Question by Delegates.observable(Question(),
+                { _, _, new ->
+                    if (new.name.isNullOrEmpty() and new.say.isNullOrEmpty()) {
+                        textView_name.text = "-"
+                        textView_say.text = "익명 입니다"
+                    }
+                    else {
+                        textView_name.text = new.name
+                        textView_say.text = new.say
+                    }
+
+                    textView_question.text = "Q. ${new.question}"
+                })
+
+        var answers: List<Answer> by Delegates.observable(ArrayList(),
+                { _, _, answers ->
+                    var answerText = ""
+                    answers.forEach {
+                        answerText += it.answer
+                        answerText += "\n\n"
+                    }
+
+                    if (answerText.isEmpty()) {
+                        textView_answer.alpha = 0.4f
+                        textView_answer.text = "답변을 기다리는 중입니다"
+                    }
+                    else {
+                        textView_answer.alpha = 1f
+                        textView_answer.text = answerText
+                    }
                 })
     }
 

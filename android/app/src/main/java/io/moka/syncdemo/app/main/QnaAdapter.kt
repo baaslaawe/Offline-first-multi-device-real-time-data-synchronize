@@ -20,7 +20,7 @@ import org.jetbrains.anko.sdk15.coroutines.onClick
 
 class QnaAdapter(private val context: Context) : BaseAdapter<QnaAdapter.Data, RecyclerItemView<QnaAdapter.Data>>() {
 
-    var onClickItem: ((qna: Data?) -> Unit)? = null
+    var onClickItem: ((qna: Data) -> Unit)? = null
 
     override fun onCreateContentItemViewHolder(parent: ViewGroup, contentViewType: Int): RecyclerView.ViewHolder {
         return QnaItemView(context, parent)

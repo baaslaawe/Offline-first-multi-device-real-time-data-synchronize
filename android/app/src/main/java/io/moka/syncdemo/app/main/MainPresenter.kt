@@ -15,8 +15,8 @@ class MainPresenter(var view: MainActivity) {
             QuestionDao
                     .getAll()
                     ?.forEach {
-                        val answer = AnswerDao.getByQuestion(it.id)
-                        qnaList.add(QnaAdapter.Data(it, answer))
+                        val answers = AnswerDao.getByQuestion(it.id)
+                        qnaList.add(QnaAdapter.Data(it, answers))
                     }
 
             postMain { view.setAdapter(qnaList) }
