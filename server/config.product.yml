@@ -1,0 +1,7 @@
+database:
+  driver: mysql
+  connection: moka:moka7182@tcp(moka.clpkzzowkv0m.ap-northeast-2.rds.amazonaws.com:3306)/epodule
+
+debug: true
+service: sync_sample
+httpport: 3000
