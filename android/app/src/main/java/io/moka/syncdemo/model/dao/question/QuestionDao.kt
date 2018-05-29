@@ -1,5 +1,6 @@
 package io.moka.syncdemo.model.dao.question
 
+import io.moka.syncdemo.component.sync.SyncAdapter
 import io.moka.syncdemo.model.RealmHelper
 import io.moka.syncdemo.model.dao._BaseDao
 import io.moka.syncdemo.model.domain.Question
@@ -51,7 +52,7 @@ object QuestionDao : _BaseDao<Question> {
 
         if (null != copyQuestion) {
             if (!syncFlag) {
-//                SyncAdapter.performSync()
+                SyncAdapter.performSync()
             }
             return copyQuestion!!
         }
@@ -91,7 +92,7 @@ object QuestionDao : _BaseDao<Question> {
                 callback = {
                     if (null == realm) {
                         if (!syncFlag) {
-//                            SyncAdapter.performSync()
+                            SyncAdapter.performSync()
                         }
                         callback(copyQuestion!!)
                     }
@@ -129,7 +130,7 @@ object QuestionDao : _BaseDao<Question> {
 
         if (null != copyQuestion) {
             if (!syncFlag) {
-//                SyncAdapter.performSync()
+                SyncAdapter.performSync()
             }
             return copyQuestion!!
         }
@@ -164,7 +165,7 @@ object QuestionDao : _BaseDao<Question> {
                 callback = {
                     if (null != copyQuestion) {
                         if (!syncFlag) {
-//                            SyncAdapter.performSync()
+                            SyncAdapter.performSync()
                         }
                         callback(copyQuestion!!)
                     }

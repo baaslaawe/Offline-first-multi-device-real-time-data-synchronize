@@ -22,7 +22,7 @@ object RealmHelper {
         Realm.setDefaultConfiguration(builder.build())
     }
 
-    private val instance: Realm
+    val instance: Realm
         get() = Realm.getDefaultInstance()
 
     /**

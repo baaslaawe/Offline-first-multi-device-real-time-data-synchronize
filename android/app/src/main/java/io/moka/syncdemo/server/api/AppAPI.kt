@@ -41,15 +41,11 @@ object AppAPI {
                 .client(client
                         .newBuilder()
                         .addInterceptor { chain ->
-                            val userAgent = System.getProperty("http.agent") + " syncdemo/${BuildConfig.VERSION_NAME}"
-
                             chain.proceed(
                                     chain.request()
                                             .newBuilder()
-                                            .addHeader("Accept", "application/vnd.epodule.v1+json")
+                                            .addHeader("Accept", "application/vnd.syncdemo.v1+json")
                                             .addHeader("Content-Type", "application/json")
-                                            .addHeader("User-Agent", userAgent)
-                                            .addHeader("Authentication-Token", "")
                                             .build()
                             )
                         }

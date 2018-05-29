@@ -45,6 +45,15 @@ class QnaAdapter(private val context: Context) : BaseAdapter<QnaAdapter.Data, Re
                 /* */
                 if (null != answers && answers.size > 1) {
                     textView_answer_more.visible()
+                    textView_answer_more.text = "${answers.size - 1}개의 답변이 더 있습니다"
+
+                    textView_answer.alpha = 1f
+                    textView_answer.text = answers.first().answer
+                    textView_answer.typeface = Typeface.DEFAULT_BOLD
+                }
+                else if (null != answers && answers.size == 1) {
+                    textView_answer_more.visible()
+                    textView_answer_more.text = "총 ${answers.size}개의 답변이 있습니다"
 
                     textView_answer.alpha = 1f
                     textView_answer.text = answers.first().answer

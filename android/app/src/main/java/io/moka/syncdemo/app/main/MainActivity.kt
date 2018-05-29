@@ -10,6 +10,10 @@ import io.moka.syncdemo.app.detail.DetailActivity
 import io.moka.syncdemo.app.main.dialog.PostQuestionDialog
 import io.moka.syncdemo.app.main.dialog.SetUserDialog
 import io.moka.syncdemo.component.UserManager
+import io.moka.syncdemo.component.eventbus.Events
+import io.moka.syncdemo.component.eventbus.RxBus
+import io.moka.syncdemo.component.sync.SyncAdapter
+import io.moka.syncdemo.util.postMain
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk15.coroutines.onClick
 import java.util.*
@@ -27,7 +31,22 @@ class MainActivity : BaseActivity() {
 
         initView()
         loadData()
+
+        SyncAdapter.performSync()
     }
+
+    override fun onResume() {
+        super.onResume()
+        refresh()
+    }
+
+    override fun onDestroy() {
+        RxBus.unregister(this)
+        super.onDestroy()
+    }
+
+    /**
+     */
 
     private fun initView() {
         /* recyclerView */
@@ -49,6 +68,10 @@ class MainActivity : BaseActivity() {
         textView_say.onClick { onClickToSetUser() }
         floatingActionButton_add.onClick { onClickToPostQuestion() }
         adapter.onClickItem = { onClickToDetail(it) }
+
+        RxBus.subscribe(Events.REFRESH_FOR_SYNC, this, {
+            postMain { refresh() }
+        })
     }
 
     private fun loadData() {
@@ -95,6 +118,8 @@ class MainActivity : BaseActivity() {
      */
 
     fun refresh() {
+        if (isFinishing || recyclerView.isComputingLayout)
+            return
         adapter.clear()
         presenter.loadData()
     }

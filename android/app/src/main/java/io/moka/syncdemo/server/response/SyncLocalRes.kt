@@ -1,5 +1,8 @@
 package io.moka.syncdemo.server.response
 
+import io.moka.syncdemo.server.json.AnswerJson
+import io.moka.syncdemo.server.json.QuestionJson
+
 
 class SyncLocalRes : BaseRes() {
 
@@ -14,7 +17,8 @@ class SyncLocalRes : BaseRes() {
     }
 
     class Result {
-
+        var questions: List<QuestionJson>? = null
+        var answers: List<AnswerJson>? = null
     }
 
 }

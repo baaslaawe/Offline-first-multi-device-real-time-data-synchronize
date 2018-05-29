@@ -13,7 +13,7 @@ open class Answer(
         var questionServerId: Long = 0,
         var questionId: Long = 0,
 
-        var name: Long = 0,
+        var name: String? = null,
         var answer: String? = null,
 
         var dirtyFlag: Boolean = true,

@@ -12,8 +12,11 @@ class SyncServerRes : BaseRes() {
     }
 
     class Result {
-        var postQnA: List<PostRes>? = null
-        var patchQnA: List<PatchRes>? = null
+        var postQuestion: List<PostRes>? = null
+        var patchQuestion: List<PatchRes>? = null
+
+        var postAnswer: List<PostRes>? = null
+        var patchAnswer: List<PatchRes>? = null
     }
 
     class PatchRes {

@@ -1,5 +1,6 @@
 package io.moka.syncdemo.model.dao.answer
 
+import io.moka.syncdemo.component.sync.SyncAdapter
 import io.moka.syncdemo.model.RealmHelper
 import io.moka.syncdemo.model.dao._BaseDao
 import io.moka.syncdemo.model.domain.Answer
@@ -49,7 +50,7 @@ object AnswerDao : _BaseDao<Answer> {
 
         if (null != copyAnswer) {
             if (!syncFlag) {
-//                SyncAdapter.performSync()
+                SyncAdapter.performSync()
             }
             return copyAnswer!!
         }
@@ -127,7 +128,7 @@ object AnswerDao : _BaseDao<Answer> {
 
         if (null != copyAnswer) {
             if (!syncFlag) {
-//                SyncAdapter.performSync()
+                SyncAdapter.performSync()
             }
             return copyAnswer!!
         }

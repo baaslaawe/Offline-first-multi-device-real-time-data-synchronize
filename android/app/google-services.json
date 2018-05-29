@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "638081877734",
+    "firebase_url": "https://syncdemo-2160c.firebaseio.com",
+    "project_id": "syncdemo-2160c",
+    "storage_bucket": "syncdemo-2160c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638081877734:android:a3f9002eef3e0e31",
+        "android_client_info": {
+          "package_name": "io.moka.syncdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638081877734-ls836hrt0dmtl3e9bbvu3lio6vbnrsne.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "638081877734-ls836hrt0dmtl3e9bbvu3lio6vbnrsne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9MV_UkMZyfORN8RzGdYQuILfMKF2r_c8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

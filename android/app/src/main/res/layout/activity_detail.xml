@@ -70,16 +70,51 @@
 		app:layout_constraintTop_toBottomOf="@+id/imageView_profile"/>
 
 	<TextView
-		android:id="@+id/textView_answer"
+		android:id="@+id/textView_answer_title"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_marginLeft="16dp"
+		android:layout_marginLeft="18dp"
 		android:layout_marginRight="16dp"
 		android:layout_marginTop="14dp"
-		android:textSize="12dp"
+		android:alpha="0.66"
+		android:text="총 2개의 답변이 있습니다"
+		android:textSize="10dp"
 		android:textStyle="bold"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/imageView_background"/>
+
+	<ScrollView
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textView_answer_title">
+
+		<TextView
+			android:id="@+id/textView_answer"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="16dp"
+			android:layout_marginRight="16dp"
+			android:layout_marginTop="16dp"
+			android:textSize="12dp"
+			android:textStyle="bold"/>
+
+	</ScrollView>
+
+	<android.support.design.widget.FloatingActionButton
+		android:id="@+id/floatingActionButton_reply"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="18dp"
+		android:layout_marginRight="18dp"
+		android:clickable="true"
+		app:backgroundTint="#FFFF81A2"
+		app:fabSize="normal"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:srcCompat="@drawable/vc_add_white"/>
 
 </android.support.constraint.ConstraintLayout>

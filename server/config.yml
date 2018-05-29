@@ -1,6 +1,0 @@
-database:
-  driver: sqlite3
-  connection: sync_sample.db
-debug: true
-service: sync_sample
-httpport: 8080

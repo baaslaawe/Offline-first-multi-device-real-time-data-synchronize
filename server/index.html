@@ -1,0 +1,93 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>TODO App</title>
+
+    <!-- Chrome, Safari, IE -->
+    <link rel="shortcut icon" href="static/favicon.png">
+    <!-- Firefox, Opera (Chrome and Safari say thanks but no thanks) -->
+    <link rel="icon" href="static/favicon.png">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Vue.js -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js"></script>
+</head>
+
+<body>
+<div class="container" style="width: 1510px; margin-bottom: 200px">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Q&A - SyncDemo</h2>
+            <ul class="list-group">
+                <li class="list-group-item" v-for="qna in qnaList">
+                    이름 : {{qna.q_name}} "{{qna.q_say}}" <br>
+                    질문 : {{qna.q_question}} <br>
+                    __ <br>
+                    (답변 총 {{qna.answers.length}}개 가 있습니다) <br>
+                    <div v-for="answer in qna.answers">
+                        답변 : {{answer.answer}} ({{answer.a_name}}) <br>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+<script>
+    new Vue({
+        el: 'body',
+
+        data: {
+            qnaList: [],
+            newAnswer: {}
+        },
+
+        mounted: function () {
+        },
+
+        // This is run whenever the page is loaded to make sure we have a current task list
+        created: function () {
+            this.loadData();
+
+            setInterval(function () {
+                this.loadData();
+            }.bind(this), 2000);
+        },
+
+        methods: {
+            loadData: function () {
+                this.$http.get('/v1/api/qna').then(function (response) {
+                    this.qnaList = response.data.data.result ? response.data.data.result : []
+                })
+            },
+
+            createAnswer: function () {
+                if (!$.trim()) {
+                    return
+                }
+
+                this.$http.post('', this.newAnswer).success(function (response) {
+                }).error(function (error) {
+                    console.log(error)
+                });
+            },
+        }
+    })
+</script>
