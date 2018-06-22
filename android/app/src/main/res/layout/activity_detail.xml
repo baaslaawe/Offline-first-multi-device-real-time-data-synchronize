@@ -8,10 +8,12 @@
 	<ImageView
 		android:id="@+id/imageView_background"
 		android:layout_width="match_parent"
-		android:layout_height="136dp"
+		android:layout_height="0dp"
 		android:fitsSystemWindows="true"
 		android:foreground="@drawable/gd_main_back"
-		android:scaleType="centerCrop"/>
+		android:scaleType="centerCrop"
+		app:layout_constraintBottom_toBottomOf="@+id/textView_question"
+		app:layout_constraintTop_toTopOf="parent"/>
 
 	<ImageView
 		android:id="@+id/imageView_back"
@@ -27,8 +29,8 @@
 		android:layout_height="32dp"
 		android:layout_marginBottom="46dp"
 		android:layout_marginLeft="14dp"
-		app:layout_constraintBottom_toBottomOf="@+id/imageView_background"
 		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/imageView_back"
 		app:srcCompat="@drawable/vc_profile_gray"/>
 
 	<TextView
@@ -61,6 +63,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="14dp"
+		android:paddingBottom="14dp"
 		android:text="Q. 질문입니다"
 		android:textColor="#FFFFFFFF"
 		android:textColorHint="#FFEEEEEE"

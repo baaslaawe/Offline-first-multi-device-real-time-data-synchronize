@@ -10,7 +10,6 @@ var Question = require('../model/Question.js');
 
 exports.syncLocal = function (req, res) {
     var params = url.parse(req.url, true).query;
-    var user = req.user;
 
     if (!params.syncAt)
         helpers.sendFailure(req, res, helpers.missingData("syncAt"));
@@ -349,5 +348,28 @@ exports.getAll = function (req, res) {
 };
 
 exports.insertAnswer = function (req, res) {
+    var postData = req.body;
+    console.log("postData : " + JSON.stringify(postData));
 
+    var question_id = postData.question_id;
+    var answer = postData.answer;
+
+    var newAnswer = Answer.new(
+        {
+            question_id: question_id,
+            answer: answer,
+            name: "웹"
+        });
+    console.log("newAnswer : " + JSON.stringify(newAnswer));
+
+    newAnswer.insert(function (err, result) {
+        if (err) {
+            helpers.sendFailure(req, res, err);
+        }
+        else {
+            helpers.sendSuccess(req, res, {
+                result: "success"
+            });
+        }
+    });
 };

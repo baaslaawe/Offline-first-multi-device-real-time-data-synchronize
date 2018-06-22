@@ -12,7 +12,7 @@ android {
         applicationId "io.moka.syncdemo"
 
         targetSdkVersion 26
-        minSdkVersion 23
+        minSdkVersion 21
 
         multiDexEnabled true
         versionCode 1
@@ -29,8 +29,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":imagepicker")
 
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.21.2"
 
     /* Support library */

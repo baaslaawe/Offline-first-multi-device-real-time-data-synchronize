@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/constraintLayout_container"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content">
@@ -71,12 +72,13 @@
 				android:layout_height="wrap_content"
 				android:layout_marginLeft="8dp"
 				android:layout_marginRight="12dp"
-				android:maxLines="1"
-				android:text="질문 입니다"
+				android:ellipsize="end"
+				android:maxLines="2"
 				android:textSize="12dp"
-				app:layout_constraintBottom_toBottomOf="@+id/textView_question_label"
 				app:layout_constraintLeft_toRightOf="@+id/textView_question_label"
-				app:layout_constraintRight_toRightOf="parent"/>
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="@+id/textView_question_label"
+				tools:text="질문 입니다\n질문을 할거에요"/>
 
 			<View
 				android:id="@+id/view_divider"
@@ -88,7 +90,7 @@
 				android:background="#FFCCCCCC"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintRight_toRightOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/textView_question_label"/>
+				app:layout_constraintTop_toBottomOf="@+id/textView_question"/>
 
 			<TextView
 				android:id="@+id/textView_answer_label"

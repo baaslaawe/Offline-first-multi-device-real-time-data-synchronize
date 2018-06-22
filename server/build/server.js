@@ -1,9 +1,7 @@
 /*
 
  ```
- $ sudo npm run build;
- $ gulp --ver release;
- $ sudo npm rebuild
+ $ sudo npm run dev
 
  ```
 

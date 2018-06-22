@@ -2,11 +2,11 @@ var config = {};
 
 config = {
     db_config: {
-        host: "localhost", // "localhost"
+        host: "localhost", // ""
         port: 3306,
-        user: "root", // "root"
+        user: "", // "root"
         password: "", // ""
-        database: "sync_demo",
+        database: "",
 
         pooled_connections: 2000,
         idle_timeout_millis: 30000

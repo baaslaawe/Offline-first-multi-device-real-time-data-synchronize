@@ -33,11 +33,24 @@
     <div class="row">
         <div class="col-md-8">
             <h2>Q&A - SyncDemo</h2>
+            <div v-if="isShowAnswer" style="position: relative; margin-bottom: 30px;">
+                이름 : {{qna_toAnswer.q_name}} "{{qna_toAnswer.q_say}}" <br>
+                질문 : {{qna_toAnswer.q_question}}<br>
+                <input type="text" class="form-control" placeholder="답변 입력"
+                        v-model="answer">
+
+                <div @click="createAnswer()" style="cursor:pointer; position: absolute; right: 10px; top: 48px;">입력 하기</div>
+            </div>
+
             <ul class="list-group">
                 <li class="list-group-item" v-for="qna in qnaList">
                     이름 : {{qna.q_name}} "{{qna.q_say}}" <br>
                     질문 : {{qna.q_question}} <br>
                     __ <br>
+                    <a>
+                        <div style="cursor: pointer;" @click="onClickToAnswer(qna)">답변하기</div>
+                    </a>
+
                     (답변 총 {{qna.answers.length}}개 가 있습니다) <br>
                     <div v-for="answer in qna.answers">
                         답변 : {{answer.answer}} ({{answer.a_name}}) <br>
@@ -50,13 +63,18 @@
 </div>
 </body>
 </html>
+
 <script>
     new Vue({
         el: 'body',
 
         data: {
             qnaList: [],
-            newAnswer: {}
+            newAnswer: {},
+
+            isShowAnswer: false,
+            qna_toAnswer: {},
+            answer: "",
         },
 
         mounted: function () {
@@ -78,15 +96,34 @@
                 })
             },
 
-            createAnswer: function () {
-                if (!$.trim()) {
-                    return
-                }
+            onClickToAnswer: function (data) {
+                this.isShowAnswer = !this.isShowAnswer;
+                this.qna_toAnswer = data;
+            },
 
-                this.$http.post('', this.newAnswer).success(function (response) {
-                }).error(function (error) {
-                    console.log(error)
-                });
+            createAnswer: function () {
+                var body = {
+                    answer: this.answer,
+                    question_id: this.qna_toAnswer.id
+                };
+
+                console.log("log body : " + JSON.stringify(body));
+
+                this.$http.post('/v1/api/answer', body)
+                        .success(function (response) {
+                            this.isShowAnswer = false;
+                            this.qna_toAnswer = {};
+                            this.answer = "";
+
+                            console.log("log response : " + JSON.stringify(response));
+                        })
+                        .error(function (error) {
+                            this.isShowAnswer = false;
+                            this.qna_toAnswer = {};
+                            this.answer = "";
+
+                            console.log(error)
+                        });
             },
         }
     })
