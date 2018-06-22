@@ -370,6 +370,8 @@ exports.insertAnswer = function (req, res) {
             helpers.sendSuccess(req, res, {
                 result: "success"
             });
+
+            pushFcm();
         }
     });
 };

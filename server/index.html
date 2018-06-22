@@ -32,7 +32,7 @@
 <div class="container" style="width: 1510px; margin-bottom: 200px">
     <div class="row">
         <div class="col-md-8">
-            <h2>Q&A - SyncDemo</h2>
+            <h2 style="color: #8E6FFE">Q&A - SyncDemo</h2>
             <div v-if="isShowAnswer" style="position: relative; margin-bottom: 30px;">
                 이름 : {{qna_toAnswer.q_name}} "{{qna_toAnswer.q_say}}" <br>
                 질문 : {{qna_toAnswer.q_question}}<br>
@@ -42,21 +42,22 @@
                 <div @click="createAnswer()" style="cursor:pointer; position: absolute; right: 10px; top: 48px;">입력 하기</div>
             </div>
 
-            <ul class="list-group">
-                <li class="list-group-item" v-for="qna in qnaList">
-                    이름 : {{qna.q_name}} "{{qna.q_say}}" <br>
-                    질문 : {{qna.q_question}} <br>
-                    __ <br>
-                    <a>
-                        <div style="cursor: pointer;" @click="onClickToAnswer(qna)">답변하기</div>
-                    </a>
+            <div v-for="qna in qnaList">
 
-                    (답변 총 {{qna.answers.length}}개 가 있습니다) <br>
-                    <div v-for="answer in qna.answers">
-                        답변 : {{answer.answer}} ({{answer.a_name}}) <br>
-                    </div>
-                </li>
-            </ul>
+                <div style="margin-top: 50px; font-size: 36px; font-weight: bold;">Q. {{qna.q_question}}
+                    <span style="font-size: 12px; font-weight: normal">by. {{qna.q_name}} "{{qna.q_say}}"</span>
+                </div>
+
+                <div style="color: #CCCCCC; ">____________________________________________________________________________________________________________________________________</div>
+                <div style="margin-bottom: 14px; cursor: pointer;" @click="onClickToAnswer(qna)">답변하기</div>
+                <div style="margin-bottom: 10px; color: #8D9AFC">답변 총 {{qna.answers.length}}개 가 있습니다</div>
+
+                <div style="font-size: 16px; margin-bottom: 10px" v-for="answer in qna.answers">
+                    <span style="font-weight: bold">A.</span> {{answer.answer}}
+                    <span style="color: gray; font-size: 11px">by. {{answer.a_name}}</span>
+                </div>
+
+            </div>
         </div>
 
     </div>
